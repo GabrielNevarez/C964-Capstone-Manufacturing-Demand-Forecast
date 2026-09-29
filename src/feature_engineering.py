@@ -85,6 +85,10 @@ weekly_df["Prev_Week2"] = weekly_df.groupby(
     ["Product_Code", "Warehouse"]
 )["Total_Demand"].shift(2)
 
+weekly_df["Prev_Week3"] = weekly_df.groupby(
+    ["Product_Code", "Warehouse"]
+)["Total_Demand"].shift(3)
+
 weekly_df["Prev_Week4"] = weekly_df.groupby(
     ["Product_Code", "Warehouse"]
 )["Total_Demand"].shift(4)
@@ -111,6 +115,7 @@ model_df = weekly_df.dropna(
     subset=[
         "Prev_Week1",
         "Prev_Week2",
+        "Prev_Week3",
         "Prev_Week4",
         "Rolling_Mean_4"
     ]
